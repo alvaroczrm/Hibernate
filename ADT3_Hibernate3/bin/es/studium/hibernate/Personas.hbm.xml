@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 15 nov 2021 9:06:49 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="ad" dynamic-insert="false" dynamic-update="false" mutable="true" name="es.studium.hibernate.Personas" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="personas">
+        <id name="idPersona" type="java.lang.Integer">
+            <column name="idPersona"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="nombre" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaNacimiento" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="fechaNacimiento" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="movieses" optimistic-lock="true" sort="unsorted" table="movies">
+            <key on-delete="noaction">
+                <column name="director" not-null="true"/>
+            </key>
+            <one-to-many class="es.studium.hibernate.Movies" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 15 nov 2021 9:06:49 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="ad" dynamic-insert="false" dynamic-update="false" mutable="true" name="es.studium.hibernate.Movies" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="movies">
+        <id name="idPelicula" type="java.lang.Integer">
+            <column name="idPelicula"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="es.studium.hibernate.Personas" embed-xml="true" fetch="select" insert="true" name="personas" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="director" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="titulo" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="titulo" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="ano" optimistic-lock="true" type="int" unique="false">
+            <column name="ano" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="duracion" optimistic-lock="true" type="int" unique="false">
+            <column name="duracion" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
