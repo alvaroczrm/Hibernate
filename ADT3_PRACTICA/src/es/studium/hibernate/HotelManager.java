@@ -24,10 +24,12 @@ public class HotelManager {
 	}
 	/*consulta bd*/
 	public static void readClientes(int id){
-		String c = "FROM " + Clientes.class.getName()+" where id="+id;		
+		String c = "FROM " + Clientes.class.getName()+" where id="+id;	
+		try {
 		Session sessionObj = getSessionFactory().openSession();
 		Clientes cliente = (Clientes) sessionObj.createQuery(c).uniqueResult();
-		System.out.println("Resultado de busqueda "+cliente.getNombreCliente()+","+cliente.getApellidosCliente()+","+cliente.getEmailCliente()+","+cliente.getDniCliente()+","+cliente.getClaveCliente());
+		System.out.println("Resultado de busqueda "+cliente.getNombreCliente()+","+cliente.getApellidosCliente()+","+cliente.getEmailCliente()+","+cliente.getDniCliente()+","+cliente.getClaveCliente());}
+		catch(Exception e) {System.out.println("Sin resultados para el id: "+id);}
 	}
 	public static void updateClientes(int id, String apellido) {
 		Session sessionObj = getSessionFactory().openSession();
